@@ -1,0 +1,21 @@
+{#
+| Variable                 | Type     | Description   |
+|--------------------------|----------|---------------|
+| component.items          | object[] |               |
+| component.items[].icon   | string   | sicon-*       |
+| component.items[].title  | string   |               |
+| component.items[].text   | ?string  |               |
+#}
+<section data-testid="store-home-gt-trust" class="s-block s-block--gt-trust">
+	<div class="container">
+		<div class="gt-grid" style="--gt-cols: 4">
+			{% for item in component.items %}
+				<div class="gt-trust__card">
+					<i class="{{ item.icon|default('sicon-shield-check') }}"></i>
+					<h3 class="gt-trust__title">{{ item.title }}</h3>
+					{% if item.text %}<p class="gt-trust__text">{{ item.text }}</p>{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

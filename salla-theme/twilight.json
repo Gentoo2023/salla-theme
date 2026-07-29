@@ -1,0 +1,328 @@
+{
+  "theme_name": "Gentooshop",
+  "version": "1.0.0",
+  "repo_url": "",
+  "support_url": "",
+  "support_rtl": true,
+  "settings": [
+    {
+      "type": "string",
+      "id": "placeholder",
+      "format": "hidden",
+      "value": "images/img_placeholder.png"
+    }
+  ],
+  "features": [
+    "component-featured-products",
+    "component-fixed-banner",
+    "component-fixed-products",
+    "component-photos-slider",
+    "component-products-slider",
+    "component-parallax-background",
+    "component-testimonials",
+    "component-square-photos",
+    "component-store-features",
+    "component-youtube",
+    "filters"
+  ],
+  "components": [
+    {
+      "name": "gt-hero",
+      "title": "بانر رئيسي (جنتو)",
+      "icon": "sicon-image",
+      "path": "home.gt-hero",
+      "fields": [
+        {
+          "id": "image",
+          "type": "string",
+          "format": "image",
+          "label": "الصورة",
+          "required": true
+        },
+        {
+          "id": "badge",
+          "type": "string",
+          "label": "شارة (إختياري)"
+        },
+        {
+          "id": "title",
+          "type": "string",
+          "label": "العنوان الرئيسي",
+          "required": true
+        },
+        {
+          "id": "subtitle",
+          "type": "string",
+          "format": "textarea",
+          "label": "نص توضيحي (إختياري)"
+        },
+        {
+          "id": "cta_text",
+          "type": "string",
+          "label": "نص الزر"
+        },
+        {
+          "id": "cta_url",
+          "type": "string",
+          "label": "رابط الزر"
+        }
+      ]
+    },
+    {
+      "name": "gt-trust-mini",
+      "title": "شريط الطمأنينة المصغّر (جنتو)",
+      "icon": "sicon-shield-check",
+      "path": "home.gt-trust-mini",
+      "fields": [
+        {
+          "id": "items",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 2,
+          "maxLength": 6,
+          "fields": [
+            {
+              "id": "icon",
+              "type": "string",
+              "label": "أيقونة سلة (sicon-*)"
+            },
+            {
+              "id": "text",
+              "type": "string",
+              "label": "النص",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gt-countdown-strip",
+      "title": "عنوان مع عدّاد تنازلي (جنتو)",
+      "icon": "sicon-clock",
+      "path": "home.gt-countdown-strip",
+      "fields": [
+        {
+          "id": "title",
+          "type": "string",
+          "label": "العنوان",
+          "required": true
+        },
+        {
+          "id": "ends_at",
+          "type": "string",
+          "label": "ينتهي في (YYYY-MM-DD HH:MM)"
+        },
+        {
+          "id": "link_text",
+          "type": "string",
+          "label": "نص الرابط (إختياري)"
+        },
+        {
+          "id": "link_url",
+          "type": "string",
+          "label": "رابط عرض الكل"
+        }
+      ]
+    },
+    {
+      "name": "gt-banners",
+      "title": "شبكة بانرات تسويقية (جنتو)",
+      "icon": "sicon-grid",
+      "path": "home.gt-banners",
+      "fields": [
+        {
+          "id": "columns",
+          "type": "string",
+          "label": "عدد الأعمدة — اكتب 2 أو 3 أو 4 (الافتراضي 4)"
+        },
+        {
+          "id": "banners",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 2,
+          "maxLength": 8,
+          "fields": [
+            {
+              "id": "image",
+              "type": "string",
+              "format": "image",
+              "label": "الصورة",
+              "required": true
+            },
+            {
+              "id": "title",
+              "type": "string",
+              "label": "العنوان (إختياري)"
+            },
+            {
+              "id": "url",
+              "type": "string",
+              "label": "الرابط"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gt-videos",
+      "title": "شبكة فيديوهات (جنتو)",
+      "icon": "sicon-video",
+      "path": "home.gt-videos",
+      "fields": [
+        {
+          "id": "title",
+          "type": "string",
+          "label": "العنوان",
+          "required": true
+        },
+        {
+          "id": "badge",
+          "type": "string",
+          "label": "شارة (إختياري)"
+        },
+        {
+          "id": "videos",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 8,
+          "fields": [
+            {
+              "id": "thumb",
+              "type": "string",
+              "format": "image",
+              "label": "الصورة المصغّرة",
+              "required": true
+            },
+            {
+              "id": "url",
+              "type": "string",
+              "label": "رابط الفيديو",
+              "required": true
+            },
+            {
+              "id": "caption",
+              "type": "string",
+              "label": "الوصف (إختياري)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gt-trust",
+      "title": "بطاقات مزايا المتجر (جنتو)",
+      "icon": "sicon-badge-check",
+      "path": "home.gt-trust",
+      "fields": [
+        {
+          "id": "items",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 2,
+          "maxLength": 4,
+          "fields": [
+            {
+              "id": "icon",
+              "type": "string",
+              "label": "أيقونة سلة (sicon-*)"
+            },
+            {
+              "id": "title",
+              "type": "string",
+              "label": "العنوان",
+              "required": true
+            },
+            {
+              "id": "text",
+              "type": "string",
+              "format": "textarea",
+              "label": "الوصف"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gt-recently",
+      "title": "شوهد مؤخرًا (جنتو)",
+      "icon": "sicon-eye",
+      "path": "home.gt-recently",
+      "fields": [
+        {
+          "id": "title",
+          "type": "string",
+          "label": "العنوان",
+          "required": true
+        },
+        {
+          "id": "limit",
+          "type": "string",
+          "label": "عدد المنتجات — اكتب رقمًا (الافتراضي 6)"
+        }
+      ]
+    },
+    {
+      "name": "gt-blog",
+      "title": "مقالات مختارة (جنتو)",
+      "icon": "sicon-blog",
+      "path": "home.gt-blog",
+      "fields": [
+        {
+          "id": "title",
+          "type": "string",
+          "label": "العنوان",
+          "required": true
+        },
+        {
+          "id": "link_text",
+          "type": "string",
+          "label": "نص رابط عرض الكل (إختياري)"
+        },
+        {
+          "id": "link_url",
+          "type": "string",
+          "label": "رابط المدونة"
+        },
+        {
+          "id": "posts",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 6,
+          "fields": [
+            {
+              "id": "image",
+              "type": "string",
+              "format": "image",
+              "label": "صورة المقال"
+            },
+            {
+              "id": "title",
+              "type": "string",
+              "label": "عنوان المقال",
+              "required": true
+            },
+            {
+              "id": "meta",
+              "type": "string",
+              "label": "التاريخ أو التصنيف"
+            },
+            {
+              "id": "url",
+              "type": "string",
+              "label": "رابط المقال",
+              "required": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

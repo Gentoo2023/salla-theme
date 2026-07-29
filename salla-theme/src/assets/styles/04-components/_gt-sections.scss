@@ -1,0 +1,258 @@
+/* Gentooshop home sections.
+   Prefixed .gt- so nothing collides with the theme's own s-block styles.
+   Logical properties throughout — the Arabic RTL layout mirrors with no extra rules.
+   Add to app.scss:  @import './04-components/gt-sections'; */
+
+$gt-orange: #F7941E;
+$gt-ink: #1c1c1c;
+$gt-muted: #8a8a8a;
+$gt-line: #ededed;
+
+/* ---- shared ---- */
+
+.gt-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-block-end: 18px;
+
+  &__title {
+    margin: 0;
+    font: 900 26px/1.2 Cairo, sans-serif;
+    color: $gt-ink;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    @media (max-width: 768px) { font-size: 20px; }
+  }
+
+  &__side { display: flex; align-items: center; gap: 14px; }
+}
+
+.gt-link {
+  font: 800 13px/1 Cairo, sans-serif;
+  color: $gt-orange;
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}
+
+.gt-badge {
+  display: inline-block;
+  background: $gt-orange;
+  color: #fff;
+  font: 800 12px/1 Cairo, sans-serif;
+  border-radius: 6px;
+  padding: 5px 10px;
+
+  &--sm { font-size: 11px; padding: 4px 8px; }
+}
+
+.gt-btn {
+  display: inline-block;
+  background: $gt-orange;
+  color: #fff;
+  font: 800 15px/1 Cairo, sans-serif;
+  border-radius: 12px;
+  padding: 14px 30px;
+  text-decoration: none;
+  &:hover { filter: brightness(.94); color: #fff; }
+}
+
+.gt-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(var(--gt-cols, 4), minmax(0, 1fr));
+
+  @media (max-width: 1100px) { grid-template-columns: repeat(min(var(--gt-cols, 4), 3), minmax(0, 1fr)); }
+  @media (max-width: 768px)  { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+}
+
+/* ---- hero ---- */
+
+.gt-hero {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #232323;
+  min-block-size: 420px;
+  display: flex;
+  align-items: center;
+
+  &__img {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  &__body {
+    position: relative;
+    padding: 40px;
+    display: grid;
+    gap: 14px;
+    justify-items: start;
+    max-inline-size: 560px;
+  }
+
+  &__title {
+    margin: 0;
+    font: 900 40px/1.25 Cairo, sans-serif;
+    color: #fff;
+    text-wrap: pretty;
+  }
+
+  &__sub {
+    margin: 0;
+    font: 600 17px/1.5 Cairo, sans-serif;
+    color: rgba(255, 255, 255, .82);
+  }
+
+  @media (max-width: 768px) {
+    min-block-size: 320px;
+    border-radius: 14px;
+    &__body { padding: 24px; }
+    &__title { font-size: 27px; }
+    &__sub { font-size: 15px; }
+  }
+}
+
+/* ---- trust mini strip ---- */
+
+.gt-trustmini {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    flex: 1 1 160px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: #fafafa;
+    border: 1px solid $gt-line;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font: 700 13px/1.3 Cairo, sans-serif;
+    color: #3a3a3a;
+
+    i { color: $gt-orange; font-size: 19px; }
+  }
+}
+
+/* ---- countdown strip ---- */
+
+.s-block--gt-countdown { padding-block-end: 0; }
+.gt-countdown__timer { --count-down-bg: #{$gt-orange}; --count-down-color: #fff; }
+
+/* ---- banners ---- */
+
+.gt-banner {
+  position: relative;
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f2f2f2;
+  aspect-ratio: 4 / 3;
+  text-decoration: none;
+
+  img { inline-size: 100%; block-size: 100%; object-fit: cover; }
+
+  &__label {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline: 0;
+    padding: 14px;
+    font: 900 15px/1.3 Cairo, sans-serif;
+    color: #fff;
+    background: linear-gradient(to top, rgba(0, 0, 0, .62), transparent);
+  }
+}
+
+/* ---- videos ---- */
+
+.gt-video {
+  position: relative;
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #eaeaea;
+  aspect-ratio: 9 / 16;
+  text-decoration: none;
+
+  img { inline-size: 100%; block-size: 100%; object-fit: cover; }
+
+  &__play {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    translate: -50% -50%;
+    inline-size: 52px;
+    block-size: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .9);
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset-block-start: 50%;
+      inset-inline-start: 54%;
+      translate: -50% -50%;
+      border-inline-start: 15px solid $gt-ink;
+      border-block: 9px solid transparent;
+    }
+  }
+
+  &__cap {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline: 0;
+    padding: 12px;
+    font: 700 13px/1.3 Cairo, sans-serif;
+    color: #fff;
+    background: linear-gradient(to top, rgba(0, 0, 0, .6), transparent);
+  }
+}
+
+/* ---- trust cards ---- */
+
+.gt-trust {
+  &__card {
+    border: 1px solid $gt-line;
+    border-radius: 14px;
+    padding: 22px;
+    background: #fff;
+
+    i { font-size: 26px; color: $gt-orange; }
+  }
+
+  &__title { margin: 12px 0 6px; font: 800 15px/1.3 Cairo, sans-serif; color: $gt-ink; }
+  &__text  { margin: 0; font: 600 13px/1.6 Cairo, sans-serif; color: $gt-muted; }
+}
+
+/* ---- recently viewed ---- */
+
+.s-block--gt-recently[hidden] { display: none; }
+
+/* ---- blog ---- */
+
+.gt-post {
+  display: block;
+  text-decoration: none;
+
+  img { inline-size: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 14px; }
+
+  &__title {
+    margin: 12px 0 5px;
+    font: 800 15px/1.45 Cairo, sans-serif;
+    color: $gt-ink;
+    text-wrap: pretty;
+  }
+
+  &__meta { font: 600 12px/1 Cairo, sans-serif; color: $gt-muted; }
+}

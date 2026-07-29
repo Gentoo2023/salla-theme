@@ -1,0 +1,32 @@
+{#
+| Variable            | Type    | Description              |
+|---------------------|---------|--------------------------|
+| component.image     | string  | Background image url     |
+| component.badge     | ?string |                          |
+| component.title     | string  |                          |
+| component.subtitle  | ?string |                          |
+| component.cta_text  | ?string |                          |
+| component.cta_url   | ?string |                          |
+| position            | int     | Sorting number from zero |
+#}
+<section data-testid="store-home-gt-hero" class="s-block s-block--gt-hero">
+	<div class="container">
+		<div class="gt-hero">
+			{% if component.image %}
+				<img class="gt-hero__img" src="{{ component.image }}" alt="{{ component.title }}" fetchpriority="high">
+			{% endif %}
+			<div class="gt-hero__body">
+				{% if component.badge %}
+					<span class="gt-badge">{{ component.badge }}</span>
+				{% endif %}
+				<h2 class="gt-hero__title">{{ component.title }}</h2>
+				{% if component.subtitle %}
+					<p class="gt-hero__sub">{{ component.subtitle }}</p>
+				{% endif %}
+				{% if component.cta_text %}
+					<a class="gt-btn" href="{{ component.cta_url|default('#') }}">{{ component.cta_text }}</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</section>
