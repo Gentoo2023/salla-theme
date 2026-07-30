@@ -1145,38 +1145,84 @@
       "icon": "sicon-image",
       "fields": [
         {
+          "type": "string",
+          "icon": "sicon-image",
+          "value": null,
           "id": "image",
-          "type": "string",
-          "label": "الصورة",
+          "label": "صورة البانر",
           "format": "image",
-          "required": true
+          "required": true,
+          "placeholder": null,
+          "description": "* المقاس المناسب للصورة هو 1600×640 بكسل"
         },
         {
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "شارة صغيرة",
+          "multilanguage": true,
           "id": "badge",
-          "type": "string",
-          "label": "شارة (إختياري)"
+          "value": null,
+          "required": false,
+          "format": "text",
+          "description": null,
+          "placeholder": "مثال: جديد",
+          "minLength": 0,
+          "maxLength": 40
         },
         {
-          "id": "title",
           "type": "string",
+          "icon": "sicon-format-text-alt",
           "label": "العنوان الرئيسي",
-          "required": true
+          "multilanguage": true,
+          "id": "title",
+          "value": null,
+          "required": true,
+          "format": "text",
+          "description": null,
+          "placeholder": "أدخل العنوان هنا...",
+          "minLength": 0,
+          "maxLength": 100
         },
         {
+          "type": "string",
+          "icon": "sicon-typography",
+          "label": "نص توضيحي",
+          "multilanguage": true,
           "id": "subtitle",
-          "type": "string",
-          "label": "نص توضيحي (إختياري)",
-          "format": "textarea"
+          "value": null,
+          "description": null,
+          "format": "textarea",
+          "required": false,
+          "placeholder": null,
+          "minLength": 0,
+          "maxLength": 300
         },
         {
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص الزر",
+          "multilanguage": true,
           "id": "cta_text",
-          "type": "string",
-          "label": "نص الزر"
+          "value": null,
+          "required": false,
+          "format": "text",
+          "description": null,
+          "placeholder": "تسوّق الآن",
+          "minLength": 0,
+          "maxLength": 40
         },
         {
-          "id": "cta_url",
           "type": "string",
-          "label": "رابط الزر"
+          "icon": "sicon-link",
+          "label": "رابط الزر",
+          "id": "cta_url",
+          "value": null,
+          "required": false,
+          "format": "text",
+          "description": null,
+          "placeholder": "https://",
+          "minLength": 0,
+          "maxLength": 500
         }
       ]
     },
@@ -1187,7 +1233,7 @@
         "en": "Gentoo — Trust strip",
         "ar": "شريط الطمأنينة المصغّر (جنتو)"
       },
-      "icon": "sicon-shield-check",
+      "icon": "sicon-heart",
       "fields": [
         {
           "id": "items",
@@ -1196,18 +1242,34 @@
           "required": true,
           "minLength": 2,
           "maxLength": 6,
+          "label": null,
+          "item_label": "عنصر",
+          "value": [],
           "fields": [
             {
-              "id": "icon",
               "type": "string",
-              "label": "أيقونة سلة (sicon-*)",
-              "format": "icon"
+              "icon": "sicon-format-text-alt",
+              "label": "الأيقونة",
+              "id": "items.icon",
+              "value": "sicon-check",
+              "required": false,
+              "format": "icon",
+              "class": "form--inline",
+              "description": null
             },
             {
-              "id": "text",
               "type": "string",
+              "icon": "sicon-format-text-alt",
               "label": "النص",
-              "required": true
+              "multilanguage": true,
+              "id": "items.text",
+              "value": null,
+              "required": true,
+              "format": "text",
+              "description": null,
+              "placeholder": null,
+              "minLength": 0,
+              "maxLength": 60
             }
           ]
         }
@@ -1220,28 +1282,62 @@
         "en": "Gentoo — Heading with countdown",
         "ar": "عنوان مع عدّاد تنازلي (جنتو)"
       },
-      "icon": "sicon-clock",
+      "icon": "sicon-calendar-time",
       "fields": [
         {
-          "id": "title",
           "type": "string",
+          "icon": "sicon-format-text-alt",
           "label": "العنوان",
-          "required": true
+          "multilanguage": true,
+          "id": "title",
+          "value": null,
+          "required": true,
+          "format": "text",
+          "description": null,
+          "placeholder": "عروض تنتهي قريبًا",
+          "minLength": 0,
+          "maxLength": 100
         },
         {
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "تاريخ الانتهاء",
+          "multilanguage": true,
           "id": "ends_at",
-          "type": "string",
-          "label": "ينتهي في (YYYY-MM-DD HH:MM)"
+          "value": null,
+          "required": false,
+          "format": "text",
+          "description": "بالصيغة YYYY-MM-DD HH:MM — مثال: 2026-08-15 23:59",
+          "placeholder": "2026-08-15 23:59",
+          "minLength": 0,
+          "maxLength": 20
         },
         {
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص رابط عرض الكل",
+          "multilanguage": true,
           "id": "link_text",
-          "type": "string",
-          "label": "نص الرابط (إختياري)"
+          "value": null,
+          "required": false,
+          "format": "text",
+          "description": null,
+          "placeholder": null,
+          "minLength": 0,
+          "maxLength": 40
         },
         {
-          "id": "link_url",
           "type": "string",
-          "label": "رابط عرض الكل"
+          "icon": "sicon-link",
+          "label": "رابط عرض الكل",
+          "id": "link_url",
+          "value": null,
+          "required": false,
+          "format": "text",
+          "description": null,
+          "placeholder": "https://",
+          "minLength": 0,
+          "maxLength": 500
         }
       ]
     },
@@ -1252,14 +1348,21 @@
         "en": "Gentoo — Promo banner grid",
         "ar": "شبكة بانرات تسويقية (جنتو)"
       },
-      "icon": "sicon-grid",
+      "icon": "sicon-layout-grid-rearrange",
       "fields": [
         {
           "id": "columns",
           "type": "number",
           "format": "integer",
-          "label": "عدد الأعمدة (2 أو 3 أو 4 — الافتراضي 4)",
-          "value": 4
+          "label": "عدد الأعمدة",
+          "description": null,
+          "labelHTML": "من 2 إلى 4",
+          "placeholder": "القيمة",
+          "icon": "sicon-pencil-ruler",
+          "value": 4,
+          "required": false,
+          "minimum": 2,
+          "maximum": 4
         },
         {
           "id": "banners",
@@ -1268,23 +1371,47 @@
           "required": true,
           "minLength": 2,
           "maxLength": 8,
+          "label": null,
+          "item_label": "بانر",
+          "value": [],
           "fields": [
             {
-              "id": "image",
               "type": "string",
+              "icon": "sicon-image",
+              "value": null,
+              "id": "banners.image",
               "label": "الصورة",
               "format": "image",
-              "required": true
+              "required": true,
+              "placeholder": null,
+              "description": "* المقاس المناسب للصورة هو 600×400 بكسل"
             },
             {
-              "id": "title",
               "type": "string",
-              "label": "العنوان (إختياري)"
+              "icon": "sicon-format-text-alt",
+              "label": "العنوان",
+              "multilanguage": true,
+              "id": "banners.title",
+              "value": null,
+              "required": false,
+              "format": "text",
+              "description": null,
+              "placeholder": null,
+              "minLength": 0,
+              "maxLength": 60
             },
             {
-              "id": "url",
               "type": "string",
-              "label": "الرابط"
+              "icon": "sicon-link",
+              "label": "الرابط",
+              "id": "banners.url",
+              "value": null,
+              "required": false,
+              "format": "text",
+              "description": null,
+              "placeholder": "https://",
+              "minLength": 0,
+              "maxLength": 500
             }
           ]
         }
@@ -1297,18 +1424,35 @@
         "en": "Gentoo — Video grid",
         "ar": "شبكة فيديوهات (جنتو)"
       },
-      "icon": "sicon-video",
+      "icon": "sicon-list-play",
       "fields": [
         {
-          "id": "title",
           "type": "string",
+          "icon": "sicon-format-text-alt",
           "label": "العنوان",
-          "required": true
+          "multilanguage": true,
+          "id": "title",
+          "value": null,
+          "required": true,
+          "format": "text",
+          "description": null,
+          "placeholder": null,
+          "minLength": 0,
+          "maxLength": 100
         },
         {
-          "id": "badge",
           "type": "string",
-          "label": "شارة (إختياري)"
+          "icon": "sicon-format-text-alt",
+          "label": "شارة صغيرة",
+          "multilanguage": true,
+          "id": "badge",
+          "value": null,
+          "required": false,
+          "format": "text",
+          "description": null,
+          "placeholder": null,
+          "minLength": 0,
+          "maxLength": 40
         },
         {
           "id": "videos",
@@ -1317,24 +1461,47 @@
           "required": true,
           "minLength": 1,
           "maxLength": 8,
+          "label": null,
+          "item_label": "فيديو",
+          "value": [],
           "fields": [
             {
-              "id": "thumb",
               "type": "string",
+              "icon": "sicon-image",
+              "value": null,
+              "id": "videos.thumb",
               "label": "الصورة المصغّرة",
               "format": "image",
-              "required": true
+              "required": true,
+              "placeholder": null,
+              "description": null
             },
             {
-              "id": "url",
               "type": "string",
+              "icon": "sicon-link",
               "label": "رابط الفيديو",
-              "required": true
+              "id": "videos.url",
+              "value": null,
+              "required": true,
+              "format": "text",
+              "description": null,
+              "placeholder": "https://",
+              "minLength": 0,
+              "maxLength": 500
             },
             {
-              "id": "caption",
               "type": "string",
-              "label": "الوصف (إختياري)"
+              "icon": "sicon-format-text-alt",
+              "label": "الوصف",
+              "multilanguage": true,
+              "id": "videos.caption",
+              "value": null,
+              "required": false,
+              "format": "text",
+              "description": null,
+              "placeholder": null,
+              "minLength": 0,
+              "maxLength": 80
             }
           ]
         }
@@ -1347,7 +1514,7 @@
         "en": "Gentoo — Store feature cards",
         "ar": "بطاقات مزايا المتجر (جنتو)"
       },
-      "icon": "sicon-badge-check",
+      "icon": "sicon-award-ribbon",
       "fields": [
         {
           "id": "items",
@@ -1356,24 +1523,48 @@
           "required": true,
           "minLength": 2,
           "maxLength": 4,
+          "label": null,
+          "item_label": "بطاقة",
+          "value": [],
           "fields": [
             {
-              "id": "icon",
               "type": "string",
-              "label": "أيقونة سلة (sicon-*)",
-              "format": "icon"
+              "icon": "sicon-format-text-alt",
+              "label": "الأيقونة",
+              "id": "items.icon",
+              "value": "sicon-shield-check",
+              "required": false,
+              "format": "icon",
+              "class": "form--inline",
+              "description": null
             },
             {
-              "id": "title",
               "type": "string",
+              "icon": "sicon-format-text-alt",
               "label": "العنوان",
-              "required": true
+              "multilanguage": true,
+              "id": "items.title",
+              "value": null,
+              "required": true,
+              "format": "text",
+              "description": null,
+              "placeholder": null,
+              "minLength": 0,
+              "maxLength": 60
             },
             {
-              "id": "text",
               "type": "string",
+              "icon": "sicon-typography",
               "label": "الوصف",
-              "format": "textarea"
+              "multilanguage": true,
+              "id": "items.text",
+              "value": null,
+              "description": null,
+              "format": "textarea",
+              "required": false,
+              "placeholder": null,
+              "minLength": 0,
+              "maxLength": 160
             }
           ]
         }
@@ -1386,20 +1577,35 @@
         "en": "Gentoo — Recently viewed",
         "ar": "شوهد مؤخرًا (جنتو)"
       },
-      "icon": "sicon-eye",
+      "icon": "sicon-image-carousel",
       "fields": [
         {
-          "id": "title",
           "type": "string",
+          "icon": "sicon-format-text-alt",
           "label": "العنوان",
-          "required": true
+          "multilanguage": true,
+          "id": "title",
+          "value": null,
+          "required": true,
+          "format": "text",
+          "description": null,
+          "placeholder": "شوهد مؤخرًا",
+          "minLength": 0,
+          "maxLength": 100
         },
         {
           "id": "limit",
           "type": "number",
           "format": "integer",
-          "label": "عدد المنتجات (الافتراضي 6)",
-          "value": 6
+          "label": "عدد المنتجات",
+          "description": null,
+          "labelHTML": "من 2 إلى 12",
+          "placeholder": "القيمة",
+          "icon": "sicon-pencil-ruler",
+          "value": 6,
+          "required": false,
+          "minimum": 2,
+          "maximum": 12
         }
       ]
     },
@@ -1410,23 +1616,48 @@
         "en": "Gentoo — Selected blog posts",
         "ar": "مقالات مختارة (جنتو)"
       },
-      "icon": "sicon-blog",
+      "icon": "sicon-newspaper",
       "fields": [
         {
-          "id": "title",
           "type": "string",
+          "icon": "sicon-format-text-alt",
           "label": "العنوان",
-          "required": true
+          "multilanguage": true,
+          "id": "title",
+          "value": null,
+          "required": true,
+          "format": "text",
+          "description": null,
+          "placeholder": null,
+          "minLength": 0,
+          "maxLength": 100
         },
         {
+          "type": "string",
+          "icon": "sicon-format-text-alt",
+          "label": "نص رابط عرض الكل",
+          "multilanguage": true,
           "id": "link_text",
-          "type": "string",
-          "label": "نص رابط عرض الكل (إختياري)"
+          "value": null,
+          "required": false,
+          "format": "text",
+          "description": null,
+          "placeholder": null,
+          "minLength": 0,
+          "maxLength": 40
         },
         {
-          "id": "link_url",
           "type": "string",
-          "label": "رابط المدونة"
+          "icon": "sicon-link",
+          "label": "رابط المدونة",
+          "id": "link_url",
+          "value": null,
+          "required": false,
+          "format": "text",
+          "description": null,
+          "placeholder": "https://",
+          "minLength": 0,
+          "maxLength": 500
         },
         {
           "id": "posts",
@@ -1435,29 +1666,61 @@
           "required": true,
           "minLength": 1,
           "maxLength": 6,
+          "label": null,
+          "item_label": "مقال",
+          "value": [],
           "fields": [
             {
-              "id": "image",
               "type": "string",
+              "icon": "sicon-image",
+              "value": null,
+              "id": "posts.image",
               "label": "صورة المقال",
-              "format": "image"
+              "format": "image",
+              "required": false,
+              "placeholder": null,
+              "description": null
             },
             {
-              "id": "title",
               "type": "string",
+              "icon": "sicon-format-text-alt",
               "label": "عنوان المقال",
-              "required": true
+              "multilanguage": true,
+              "id": "posts.title",
+              "value": null,
+              "required": true,
+              "format": "text",
+              "description": null,
+              "placeholder": null,
+              "minLength": 0,
+              "maxLength": 100
             },
             {
-              "id": "meta",
               "type": "string",
-              "label": "التاريخ أو التصنيف"
+              "icon": "sicon-format-text-alt",
+              "label": "التاريخ أو التصنيف",
+              "multilanguage": true,
+              "id": "posts.meta",
+              "value": null,
+              "required": false,
+              "format": "text",
+              "description": null,
+              "placeholder": null,
+              "minLength": 0,
+              "maxLength": 60
             },
             {
-              "id": "url",
               "type": "string",
+              "icon": "sicon-link",
               "label": "رابط المقال",
-              "required": true
+              "id": "posts.url",
+              "value": null,
+              "required": true,
+              "format": "text",
+              "description": null,
+              "placeholder": "https://",
+              "minLength": 0,
+              "maxLength": 500
             }
           ]
         }
