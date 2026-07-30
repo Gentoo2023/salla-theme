@@ -56,6 +56,14 @@ class ProductCard extends HTMLElement {
     return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
   } 
 
+  getDiscountPercent() {
+    const sale = parseFloat(this.product?.sale_price?.amount ?? this.product?.sale_price);
+    const reg  = parseFloat(this.product?.regular_price?.amount ?? this.product?.regular_price);
+    if (!this.product?.is_on_sale || !sale || !reg || reg <= sale) return null;
+    const pct = Math.round(((reg - sale) / reg) * 100);
+    return pct > 0 ? pct : null;
+  }
+
   getProductBadge() {
     if (this.product?.preorder?.label) {
       return `<div class="s-product-card-promotion-title">${this.product.preorder.label}</div>`
@@ -63,6 +71,12 @@ class ProductCard extends HTMLElement {
 
     if (this.product.promotion_title) {
       return `<div class="s-product-card-promotion-title">${this.product.promotion_title}</div>`
+    }
+
+    // Gentoo: computed discount badge — the catalogue rarely sets promotion_title
+    const pct = this.getDiscountPercent();
+    if (pct) {
+      return `<div class="s-product-card-promotion-title s-product-card-discount-badge">${salla.helpers.number(pct)}%-</div>`
     }
     if (this.showQuantity && this.product?.quantity) {
       return `<div
@@ -262,8 +276,11 @@ class ProductCard extends HTMLElement {
             ${this.product?.donation?.can_donate ? '' : this.getProductPrice()}
             ${this.product?.rating?.stars ?
               `<div class="s-product-card-rating">
-                <i class="sicon-star2 before:text-orange-300"></i>
-                <span>${this.product.rating.stars}</span>
+                <span class="s-product-card-stars" aria-label="${this.product.rating.stars}">${
+                  [1,2,3,4,5].map(n => `<i class="sicon-star2 ${n <= Math.round(this.product.rating.stars) ? 'is-on' : 'is-off'}"></i>`).join('')
+                }</span>
+                <span class="s-product-card-rating-score">${this.product.rating.stars}</span>
+                ${this.product?.rating?.count ? `<span class="s-product-card-rating-count">(${salla.helpers.number(this.product.rating.count)})</span>` : ``}
               </div>`
                : ``}
           </div>
