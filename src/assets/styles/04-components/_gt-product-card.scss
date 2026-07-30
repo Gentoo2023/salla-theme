@@ -50,10 +50,10 @@ $gt-line: #ededed;
     }
   }
 
-  /* rating — theme renders one star icon + the score */
+  /* rating — five stars + score + review count (see partials/product-card.js) */
   .s-product-card-rating {
     justify-content: center;
-    gap: 4px;
+    gap: 5px;
     font: 700 11px/1 Cairo, sans-serif;
     color: #5a5a5a;
 
@@ -134,5 +134,38 @@ $gt-line: #ededed;
   @media (max-width: 768px) {
     border-radius: 12px;
     .s-product-card-content { padding: 11px 10px 13px; }
+  }
+
+  /* five-star row */
+  .s-product-card-stars {
+    display: inline-flex;
+    gap: 1px;
+
+    i {
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .is-on::before  { color: #f5a623; }
+    .is-off::before { color: #dcdce2; }
+  }
+
+  .s-product-card-rating-score {
+    font: 700 11.5px/1 Cairo, sans-serif;
+    color: #6a6a72;
+  }
+
+  .s-product-card-rating-count {
+    font: 600 11px/1 Cairo, sans-serif;
+    color: #a2a2aa;
+  }
+
+  /* computed discount badge — red, notched, top of the image */
+  .s-product-card-discount-badge {
+    background: #e23b3b;
+    color: #fff;
+    font: 800 12px/1 Cairo, sans-serif;
+    letter-spacing: 0;
+    direction: ltr;
   }
 }
