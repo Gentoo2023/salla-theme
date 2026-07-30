@@ -1,0 +1,73 @@
+{#
+  Free-shipping progress bar.
+
+  Reads the threshold from a theme setting so it is editable in the theme editor:
+      theme.settings.get('gt_free_shipping_threshold')
+  Declare that setting in twilight.json (see our twilight.json `settings` array).
+
+  It reads the live cart total from salla.cart at runtime, so the bar reflects
+  what the visitor actually has in the basket. Hides itself when the threshold is
+  already met or not configured.
+
+  Include it where you want it — typically at the top of the category page,
+  in src/views/pages/product/index.twig:
+
+      {% include 'components.home.gt-shipping-bar' %}
+#}
+{% set gt_threshold = theme.settings.get('gt_free_shipping_threshold') %}
+{% if gt_threshold %}
+  <div class="container">
+    <div class="gt-ship" id="gt-ship" data-threshold="{{ gt_threshold }}" hidden>
+      <div class="gt-ship__head">
+        <i class="sicon-truck"></i>
+        <span class="gt-ship__msg" id="gt-ship-msg"></span>
+      </div>
+      <div class="gt-ship__track">
+        <div class="gt-ship__fill" id="gt-ship-fill"></div>
+      </div>
+      <div class="gt-ship__pct" id="gt-ship-pct"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var box = document.getElementById('gt-ship');
+      if (!box) return;
+
+      var threshold = parseFloat(box.getAttribute('data-threshold')) || 0;
+      if (!threshold) return;
+
+      function paint(total) {
+        var remaining = threshold - total;
+
+        if (remaining <= 0) {
+          document.getElementById('gt-ship-msg').textContent = salla.lang.get('pages.cart.free_shipping') || 'الشحن مجاني';
+          document.getElementById('gt-ship-fill').style.width = '100%';
+          document.getElementById('gt-ship-pct').textContent = '100%';
+          box.removeAttribute('hidden');
+          return;
+        }
+
+        var pct = Math.max(0, Math.min(100, Math.round((total / threshold) * 100)));
+        document.getElementById('gt-ship-msg').textContent = 'أضف ' + salla.money(remaining) + ' للحصول على شحن مجاني';
+        document.getElementById('gt-ship-fill').style.width = pct + '%';
+        document.getElementById('gt-ship-pct').textContent = pct + '%';
+        box.removeAttribute('hidden');
+      }
+
+      function currentTotal() {
+        try {
+          var s = salla.cart.getSummary ? salla.cart.getSummary() : null;
+          return s && s.total ? parseFloat(s.total) : 0;
+        } catch (e) { return 0; }
+      }
+
+      salla.onReady(function () {
+        paint(currentTotal());
+        salla.cart.event.onUpdated(function (summary) {
+          paint(parseFloat(summary && summary.total ? summary.total : 0) || 0);
+        });
+      });
+    })();
+  </script>
+{% endif %}

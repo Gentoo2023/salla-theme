@@ -1,0 +1,31 @@
+{#
+| Variable                     | Type     | Description   |
+|------------------------------|----------|---------------|
+| component.title              | string   |               |
+| component.badge              | ?string  |               |
+| component.videos             | object[] |               |
+| component.videos[].thumb     | string   |               |
+| component.videos[].url       | string   |               |
+| component.videos[].caption   | ?string  |               |
+#}
+<section data-testid="store-home-gt-videos" class="s-block s-block--gt-videos">
+	<div class="container">
+		<div class="gt-head">
+			<h2 class="gt-head__title">
+				{{ component.title }}
+				{% if component.badge %}<span class="gt-badge gt-badge--sm">{{ component.badge }}</span>{% endif %}
+			</h2>
+		</div>
+		<div class="gt-grid" style="--gt-cols: 4">
+			{% for video in component.videos %}
+				<a class="gt-video" href="{{ video.url }}" target="_blank" rel="noopener">
+					{% if video.thumb %}
+						<img src="{{ video.thumb }}" alt="{{ video.caption }}" loading="lazy">
+					{% endif %}
+					<span class="gt-video__play"></span>
+					{% if video.caption %}<span class="gt-video__cap">{{ video.caption }}</span>{% endif %}
+				</a>
+			{% endfor %}
+		</div>
+	</div>
+</section>

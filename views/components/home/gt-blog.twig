@@ -1,0 +1,36 @@
+{#
+  Merchant-picked posts. Does NOT read the global "blog" variable — that is
+  scoped to the blog pages and is empty on the home page.
+
+| Variable                   | Type     | Description  |
+|----------------------------|----------|--------------|
+| component.title            | string   |              |
+| component.link_text        | ?string  |              |
+| component.link_url         | ?string  |              |
+| component.posts            | object[] |              |
+| component.posts[].image    | ?string  |              |
+| component.posts[].title    | string   |              |
+| component.posts[].meta     | ?string  |              |
+| component.posts[].url      | string   |              |
+#}
+<section data-testid="store-home-gt-blog" class="s-block s-block--gt-blog">
+	<div class="container">
+		<div class="gt-head">
+			<h2 class="gt-head__title">{{ component.title }}</h2>
+			{% if component.link_text and component.link_url %}
+				<a class="gt-link" href="{{ component.link_url }}">{{ component.link_text }}</a>
+			{% endif %}
+		</div>
+		<div class="gt-grid" style="--gt-cols: 3">
+			{% for post in component.posts %}
+				<a class="gt-post" href="{{ post.url }}">
+					{% if post.image %}
+						<img src="{{ post.image }}" alt="{{ post.title }}" loading="lazy">
+					{% endif %}
+					<h3 class="gt-post__title">{{ post.title }}</h3>
+					{% if post.meta %}<span class="gt-post__meta">{{ post.meta }}</span>{% endif %}
+				</a>
+			{% endfor %}
+		</div>
+	</div>
+</section>

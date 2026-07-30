@@ -9,13 +9,15 @@ ruta, sobrescribiendo el que ya está.
 |---|---|
 | `twilight.json` | Le agregué nuestros 8 componentes y el ajuste de envío gratis. Todo lo que ya tenía el tema sigue intacto. |
 | `src/assets/styles/app.scss` | 5 líneas de import para nuestros estilos. |
-| `src/views/pages/product/single.twig` | 1 línea: el tracker de "shoahed recientemente". |
+| `src/views/pages/product/single.twig` | 2 líneas: el tracker de "visto recientemente" y las secciones de la descripción. |
 | `src/views/pages/product/index.twig` | 1 línea: la barra de envío gratis. |
 
-## Archivos nuevos (15)
+## Archivos nuevos (17)
 
-- `src/views/components/home/gt-*.twig` — 10 componentes
-- `src/assets/styles/04-components/_gt-*.scss` — 5 hojas de estilo
+- `src/views/components/home/gt-*.twig` — 10 componentes de la página de inicio
+- `src/views/components/product/gt-sections.twig` — **nuevo**: convierte la descripción del
+  producto en las secciones del diseño (specs, características, FAQ, garantía, contenido del bundle)
+- `src/assets/styles/04-components/_gt-*.scss` — 6 hojas de estilo
 
 ## Después de subir
 

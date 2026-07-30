@@ -1,0 +1,119 @@
+/* Gentooshop header — RESTYLE ONLY.
+ *
+ * The theme's header.twig is built from Salla web components (salla-search,
+ * salla-menu, salla-localization-modal, salla-contacts, salla-user-menu,
+ * salla-cart-summary, custom-main-menu) and app.js wires the mobile drawer
+ * (#mobile-menu via mmenu) and the sticky behaviour (#mainnav). Replacing the
+ * markup would break all of that, so this only restyles it.
+ *
+ * Add to app.scss AFTER './04-components/header':
+ *     @import './04-components/gt-header';
+ */
+
+$gt-orange: #F7941E;
+$gt-ink: #1c1c1c;
+$gt-line: #ededed;
+
+.store-header {
+  font-family: Cairo, sans-serif;
+
+  /* ---- top strip ---- */
+  .top-navbar {
+    background: #f4f4f4;
+    border-block-end: 1px solid #ececec;
+    padding-block: 2px;
+
+    a, button, span { font-family: Cairo, sans-serif; }
+
+    a:hover { color: $gt-orange; }
+
+    .btn--rounded-gray {
+      border-radius: 9px;
+      font-weight: 700;
+      font-size: 12.5px;
+    }
+  }
+
+  /* search pill */
+  .header-search {
+    salla-search {
+      --salla-search-border-radius: 11px;
+    }
+    input {
+      border-radius: 11px !important;
+      border: 1.5px solid #e6e6e6 !important;
+      font-family: Cairo, sans-serif;
+      font-weight: 600;
+    }
+    input:focus {
+      border-color: $gt-orange !important;
+      box-shadow: 0 0 0 3px rgba(247, 148, 30, .14) !important;
+    }
+  }
+
+  /* ---- main bar ---- */
+  #mainnav,
+  .main-nav-container {
+    background: #fff;
+    border-block-end: 1px solid $gt-line;
+    box-shadow: none;
+  }
+
+  #mainnav.fixed-header {
+    box-shadow: 0 4px 18px rgba(0, 0, 0, .07);
+  }
+
+  .navbar-brand img {
+    max-block-size: 42px;
+    object-fit: contain;
+  }
+
+  /* main menu items */
+  custom-main-menu {
+    font-family: Cairo, sans-serif;
+
+    a {
+      font-weight: 700;
+      font-size: 13.5px;
+      color: #2e2e2e;
+    }
+    a:hover { color: $gt-orange; }
+
+    .root-level > a::after {
+      background: $gt-orange;
+    }
+
+    .sub-menu {
+      border-radius: 12px;
+      border: 1px solid $gt-line;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, .12);
+      overflow: hidden;
+    }
+  }
+
+  /* cart badge */
+  salla-cart-summary {
+    --salla-cart-summary-badge-bg: #e23b3b;
+
+    .s-cart-summary-count,
+    [data-cart-count] {
+      background: #e23b3b !important;
+      font-family: Cairo, sans-serif;
+      font-weight: 800;
+    }
+  }
+
+  .header-btn__icon { font-size: 23px; }
+
+  /* the burger uses the primary colour — keep it Gentoo orange */
+  .mburger i { color: $gt-orange; }
+}
+
+/* mobile drawer (mmenu) */
+.mm-menu {
+  font-family: Cairo, sans-serif;
+
+  a { font-weight: 700; font-size: 14px; }
+  a:hover { color: $gt-orange; }
+  .mm-navbar__title { font-weight: 800; }
+}
