@@ -447,6 +447,9 @@
     {# Comments Area #}
     {% if store.settings.rating.show_on_product %}
         <salla-comments data-testid="store-product-comments" item-id="{{product.id}}" type="product"></salla-comments>
+
+    {# Gentoo: records this product id so the home "Recently viewed" rail has data #}
+    {% include 'components.home.gt-recently-track' %}
     {% endif %}
 
     {#

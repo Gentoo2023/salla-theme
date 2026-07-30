@@ -1,0 +1,91 @@
+/* Gentooshop footer — RESTYLE ONLY.
+ *
+ * footer.twig is built from salla-social, salla-trust-badges, salla-menu,
+ * salla-contacts, salla-apps-icons and salla-payments. All behaviour and data
+ * stays with those components; this only restyles.
+ *
+ * Add to app.scss AFTER './04-components/footer':
+ *     @import './04-components/gt-footer';
+ *
+ * Note: the dark treatment below applies regardless of the theme's
+ * footer_is_dark setting. If you would rather drive it from that setting,
+ * wrap the block in `.footer-is-dark { ... }` and turn the setting on.
+ */
+
+$gt-orange: #F7941E;
+
+.store-footer {
+  font-family: Cairo, sans-serif;
+  background: #232323;
+  color: #cfcfcf;
+
+  &__inner {
+    border-block-end: 1px solid rgba(255, 255, 255, .09);
+    padding-block: 40px;
+  }
+
+  h3 {
+    font-family: Cairo, sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: #fff;
+    margin-block-end: 14px;
+  }
+
+  /* store name in the first column reads as the logotype */
+  > .store-footer__inner .container > div:first-child h3 {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: -.3px;
+  }
+
+  a {
+    color: #cfcfcf;
+    font-weight: 600;
+    font-size: 13px;
+    &:hover { color: $gt-orange; }
+  }
+
+  p, b, span, div { font-family: Cairo, sans-serif; }
+
+  .text-text-grey { color: #8f8f8f !important; }
+
+  /* menus */
+  salla-menu a {
+    display: block;
+    padding-block: 7px;
+  }
+
+  /* social pills */
+  salla-social a {
+    inline-size: 36px;
+    block-size: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #e6e6e6;
+
+    &:hover { background: $gt-orange; color: #fff; }
+  }
+
+  /* payment badges — white chips like the design */
+  salla-payments img {
+    background: #fff;
+    border-radius: 6px;
+    padding: 5px 8px;
+    min-inline-size: 50px;
+    block-size: 32px;
+    object-fit: contain;
+  }
+
+  .copyright-text {
+    color: #7a7a7a;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* tax block */
+  .rounded-sm { border-radius: 6px; }
+}
